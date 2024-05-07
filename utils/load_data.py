@@ -1,6 +1,6 @@
 import pandas as pd
 
-def load_training_data(file_path = "data/training_data.xlsx", sheet_name=0):
+def load_data(file_path = "data/training_data.xlsx", sheet_name=0):
     """
     Loads data from an Excel file into a pandas DataFrame.
     

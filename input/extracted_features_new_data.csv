@@ -1,0 +1,13 @@
+capitalized,word_shape,contains_digit,prefixes,suffixes,POS,prev_word,prev_POS,next_word,next_POS,dep_tag,head_text,is_chunk,in_league,in_club,in_home,in_player,in_coach,in_nation,in_continent,token
+1,Xxx,0,"['N', 'Ne']","['w', 'ew']",ADJ,,,text,NOUN,amod,data,O,0,0,0,0,0,0,0,New
+0,xxxx,0,"['t', 'te', 'tex']","['t', 'xt', 'ext']",NOUN,New,ADJ,data,NOUN,compound,data,O,0,0,0,0,0,0,0,text
+0,xxxx,0,"['d', 'da', 'dat']","['a', 'ta', 'ata']",NOUN,text,NOUN,about,ADP,ROOT,data,O,0,0,0,0,0,0,0,data
+0,xxxxx,0,"['a', 'ab', 'abo', 'abou']","['t', 'ut', 'out', 'bout']",ADP,data,NOUN,Manchester,PROPN,prep,data,O,0,0,0,0,0,0,0,about
+1,Xxxxxxxxxx,0,"['M', 'Ma', 'Man', 'Manc']","['r', 'er', 'ter', 'ster']",PROPN,about,ADP,United,PROPN,compound,United,B,0,0,0,0,0,0,0,Manchester
+1,Xxxxxx,0,"['U', 'Un', 'Uni', 'Unit']","['d', 'ed', 'ted', 'ited']",PROPN,Manchester,PROPN,and,CCONJ,pobj,about,I,0,0,0,0,0,0,0,United
+0,xxx,0,"['a', 'an']","['d', 'nd']",CCONJ,United,PROPN,other,ADJ,cc,United,O,0,0,0,0,0,0,0,and
+0,xxxxx,0,"['o', 'ot', 'oth', 'othe']","['r', 'er', 'her', 'ther']",ADJ,and,CCONJ,Premier,PROPN,amod,clubs,O,0,0,0,0,0,0,0,other
+1,Xxxxxxx,0,"['P', 'Pr', 'Pre', 'Prem']","['r', 'er', 'ier', 'mier']",PROPN,other,ADJ,League,PROPN,compound,League,B,0,0,0,0,0,0,0,Premier
+1,Xxxxxx,0,"['L', 'Le', 'Lea', 'Leag']","['e', 'ue', 'gue', 'ague']",PROPN,Premier,PROPN,clubs,NOUN,compound,clubs,I,0,0,0,0,0,0,0,League
+0,xxxxx,0,"['c', 'cl', 'clu', 'club']","['s', 'bs', 'ubs', 'lubs']",NOUN,League,PROPN,.,PUNCT,conj,United,O,0,0,0,0,0,0,0,clubs
+0,.,0,[],[],PUNCT,clubs,NOUN,,,punct,data,O,0,0,0,0,0,0,0,.

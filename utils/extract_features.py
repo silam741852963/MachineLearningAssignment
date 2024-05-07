@@ -114,6 +114,6 @@ def extract_features(dataframe, json_file_path = "processed_data/popular_words.j
     # Save the DataFrame to a CSV file
     df_exploded.to_csv(output_csv_path, index=False)
 
-    print(f"Processed features are saved to '{output_csv_path}'.")
+    print(f"Extracted features are saved to '{output_csv_path}'.")
 
     return df_exploded
