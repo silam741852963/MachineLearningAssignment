@@ -1,7 +1,14 @@
 import pandas as pd
 import json
 
-def export_popular_words(league_file='data/league_club_home.xlsx', nation_file='data/nation_continent.xlsx', coach_file='data/coach.xlsx', player_file='data/player.xlsx', output_file='processed_data/popular_words.json'):
+def export_popular_words(league_file='data/league.xlsx', 
+                         home_file='data/home.xlsx',
+                         club_file='data/club.xlsx',
+                         nation_file='data/nation.xlsx', 
+                         continent_file='data/continent.xlsx',
+                         coach_file='data/coach.xlsx', 
+                         player_file='data/player.xlsx', 
+                         output_file='processed_data/popular_words.json'):
     """
     Exports popular words from different categories to a JSON file.
     
@@ -13,19 +20,22 @@ def export_popular_words(league_file='data/league_club_home.xlsx', nation_file='
     output_file (str): File path for the output JSON file. Defaults to 'popular_words.json'.
     """
     # Load data from Excel files
-    league_club_home_df = pd.read_excel(league_file)
-    nation_continent_df = pd.read_excel(nation_file)
+    league_df = pd.read_excel(league_file)
+    home_df = pd.read_excel(home_file)
+    club_df = pd.read_excel(club_file)
+    nation_df = pd.read_excel(nation_file)
+    continent_df = pd.read_excel(continent_file)
     coach_df = pd.read_excel(coach_file)
     player_df = pd.read_excel(player_file)
 
     # Extract unique values and convert to lists
-    popular_leagues = league_club_home_df['League'].drop_duplicates().tolist()
-    popular_clubs = league_club_home_df['Club'].drop_duplicates().tolist()
-    popular_homes = league_club_home_df['Home'].drop_duplicates().tolist()
+    popular_leagues = league_df['League'].drop_duplicates().tolist()
+    popular_clubs = club_df['Club'].drop_duplicates().tolist()
+    popular_homes = home_df['Home'].drop_duplicates().tolist()
     popular_players = player_df['Player'].drop_duplicates().tolist()
     popular_coaches = coach_df['Coach'].drop_duplicates().tolist()
-    popular_nations = nation_continent_df['Nation'].drop_duplicates().tolist()
-    popular_continents = nation_continent_df['Continent'].drop_duplicates().tolist()
+    popular_nations = nation_df['Nation'].drop_duplicates().tolist()
+    popular_continents = continent_df['Continent'].drop_duplicates().tolist()
 
     # Consolidating into a dictionary
     popular_words = {

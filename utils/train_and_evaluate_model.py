@@ -26,9 +26,7 @@ def train_and_evaluate_model(X, y, model_filename='model/svm_pipeline.joblib', l
 
     # Split the dataset into training and testing sets
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y_encoded, test_size=0.2, random_state=42)
-
-    print(Y_test)
-
+    
     preprocessor = ColumnTransformer(
     transformers=[
         ('features', OneHotEncoder(handle_unknown='ignore'), X.columns.to_list()),

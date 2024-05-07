@@ -1,13 +1,24 @@
 capitalized,word_shape,contains_digit,prefixes,suffixes,POS,prev_word,prev_POS,next_word,next_POS,dep_tag,head_text,is_chunk,in_league,in_club,in_home,in_player,in_coach,in_nation,in_continent,token,predicted_labels
-1,Xxx,0,N Ne,w ew,ADJ,,,text,NOUN,amod,data,O,0,0,0,0,0,0,0,New,O
-0,xxxx,0,t te tex,t xt ext,NOUN,New,ADJ,data,NOUN,compound,data,O,0,0,0,0,0,0,0,text,O
-0,xxxx,0,d da dat,a ta ata,NOUN,text,NOUN,about,ADP,ROOT,data,O,0,0,0,0,0,0,0,data,O
-0,xxxxx,0,a ab abo abou,t ut out bout,ADP,data,NOUN,Manchester,PROPN,prep,data,O,0,0,0,0,0,0,0,about,O
-1,Xxxxxxxxxx,0,M Ma Man Manc,r er ter ster,PROPN,about,ADP,United,PROPN,compound,United,B,0,0,0,0,0,0,0,Manchester,B-Home
-1,Xxxxxx,0,U Un Uni Unit,d ed ted ited,PROPN,Manchester,PROPN,and,CCONJ,pobj,about,I,0,0,0,0,0,0,0,United,I-Club
-0,xxx,0,a an,d nd,CCONJ,United,PROPN,other,ADJ,cc,United,O,0,0,0,0,0,0,0,and,O
-0,xxxxx,0,o ot oth othe,r er her ther,ADJ,and,CCONJ,Premier,PROPN,amod,clubs,O,0,0,0,0,0,0,0,other,O
-1,Xxxxxxx,0,P Pr Pre Prem,r er ier mier,PROPN,other,ADJ,League,PROPN,compound,League,B,0,0,0,0,0,0,0,Premier,B-Club
-1,Xxxxxx,0,L Le Lea Leag,e ue gue ague,PROPN,Premier,PROPN,clubs,NOUN,compound,clubs,I,0,0,0,0,0,0,0,League,I-Club
-0,xxxxx,0,c cl clu club,s bs ubs lubs,NOUN,League,PROPN,.,PUNCT,conj,United,O,0,0,0,0,0,0,0,clubs,O
-0,.,0,,,PUNCT,clubs,NOUN,,,punct,data,O,0,0,0,0,0,0,0,.,O
+1,Xxxxxxxxx,0,H Hi Hib Hibe,n an ian nian,ADJ,None,,duo,NOUN,amod,duo,B,0,0,0,0,0,0,0,Hibernian,O
+0,xxx,0,d du,o uo,NOUN,Hibernian,ADJ,Lewis,PROPN,nsubj,leave,O,0,0,0,0,0,0,0,duo,O
+1,Xxxxx,0,L Le Lew Lewi,s is wis ewis,PROPN,duo,NOUN,Stevenson,PROPN,compound,Stevenson,B,0,0,0,1,0,0,0,Lewis,B-Player
+1,Xxxxxxxxx,0,S St Ste Stev,n on son nson,PROPN,Lewis,PROPN,and,CCONJ,appos,duo,I,0,0,0,0,0,0,0,Stevenson,O
+0,xxx,0,a an,d nd,CCONJ,Stevenson,PROPN,Paul,PROPN,cc,Stevenson,O,0,0,0,0,0,1,0,and,O
+1,Xxxx,0,P Pa Pau,l ul aul,PROPN,and,CCONJ,Hanlon,PROPN,compound,Hanlon,B,0,0,0,1,0,0,0,Paul,B-Player
+1,Xxxxxx,0,H Ha Han Hanl,n on lon nlon,PROPN,Paul,PROPN,will,AUX,conj,Stevenson,I,0,0,0,0,0,0,0,Hanlon,I-Player
+0,xxxx,0,w wi wil,l ll ill,AUX,Hanlon,PROPN,leave,VERB,aux,leave,O,0,0,0,0,0,0,0,will,O
+0,xxxxx,0,l le lea leav,e ve ave eave,VERB,will,AUX,Easter,PROPN,ROOT,leave,O,0,0,0,0,0,0,0,leave,O
+1,Xxxxxx,0,E Ea Eas East,r er ter ster,PROPN,leave,VERB,Road,PROPN,compound,Road,B,0,0,0,0,0,0,0,Easter,B-Player
+1,Xxxx,0,R Ro Roa,d ad oad,PROPN,Easter,PROPN,at,ADP,dobj,leave,I,0,0,1,0,0,0,0,Road,O
+0,xx,0,a,t,ADP,Road,PROPN,the,DET,prep,leave,O,0,0,0,0,0,0,0,at,O
+0,xxx,0,t th,e he,DET,at,ADP,end,NOUN,det,end,B,0,0,0,0,0,0,0,the,O
+0,xxx,0,e en,d nd,NOUN,the,DET,of,ADP,pobj,at,I,0,0,0,0,0,0,0,end,O
+0,xx,0,o,f,ADP,end,NOUN,the,DET,prep,end,I,0,0,0,0,0,1,0,of,O
+0,xxx,0,t th,e he,DET,of,ADP,summer,NOUN,det,summer,I,0,0,0,0,0,0,0,the,O
+0,xxxxxx,0,s su sum summ,r er mer mmer,NOUN,the,DET,",",PUNCT,pobj,of,I,0,0,0,0,0,0,0,summer,O
+0,",",0,,,PUNCT,summer,NOUN,after,ADP,punct,leave,O,0,0,0,0,0,0,0,",",O
+0,xxxxx,0,a af aft afte,r er ter fter,ADP,",",PUNCT,almost,ADV,prep,leave,O,0,0,0,0,0,0,0,after,O
+0,xxxxxx,0,a al alm almo,t st ost most,ADV,after,ADP,two,NUM,advmod,two,B,0,0,0,0,0,0,0,almost,O
+0,xxx,0,t tw,o wo,NUM,almost,ADV,decades,NOUN,nummod,decades,I,0,0,0,0,0,0,0,two,O
+0,xxxxxxx,0,d de dec deca,s es des ades,NOUN,two,NUM,.,PUNCT,pobj,after,I,0,0,0,0,0,0,0,decades,O
+0,.,0,,,PUNCT,decades,NOUN,None,,punct,leave,O,0,0,0,0,0,0,0,.,O

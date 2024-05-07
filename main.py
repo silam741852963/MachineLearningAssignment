@@ -11,15 +11,15 @@ from utils.predict_new_data import predict_new_data
 # df = load_data()
 # df_exploded = extract_features(df)
 
-labeled_data = load_data("processed_data/labeled_data.xlsx")
+# labeled_data = load_data("processed_data/labeled_data.xlsx")
 
-#-----------------------Preprocess-------------------------------------------
+# #-----------------------Preprocess-------------------------------------------
 
-features = preprocess_features(labeled_data)
+# features = preprocess_features(labeled_data)
 
-#-----------------------Train------------------------------------------------
+# #-----------------------Train------------------------------------------------
 
-train_and_evaluate_model(features, labeled_data['NER'])
+# train_and_evaluate_model(features, labeled_data['NER'])
 
 #-----------------------Use--------------------------------------------------
 
