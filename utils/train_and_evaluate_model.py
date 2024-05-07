@@ -4,6 +4,7 @@ from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
+import numpy as np
 import joblib
 
 def train_and_evaluate_model(X, y, model_filename='model/svm_pipeline.joblib', label_encoder_filename='model/label_encoder.joblib'):
@@ -25,6 +26,8 @@ def train_and_evaluate_model(X, y, model_filename='model/svm_pipeline.joblib', l
 
     # Split the dataset into training and testing sets
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y_encoded, test_size=0.2, random_state=42)
+
+    print(Y_test)
 
     preprocessor = ColumnTransformer(
     transformers=[
@@ -48,4 +51,4 @@ def train_and_evaluate_model(X, y, model_filename='model/svm_pipeline.joblib', l
     predictions = pipeline.predict(X_test)
 
     # Evaluate the classifier using zero_division parameter
-    print(classification_report(Y_test, predictions, target_names=label_encoder.classes_, zero_division=0))
+    print(classification_report(Y_test, predictions, labels=np.arange(0,len(label_encoder.classes_),1), target_names=label_encoder.classes_, zero_division=0))

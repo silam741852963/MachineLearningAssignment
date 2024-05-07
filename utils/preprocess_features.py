@@ -24,7 +24,7 @@ def preprocess_features(df_exploded, output_csv_path='processed_data/processed_f
     df_exploded['suffixes'] = flatten_features(df_exploded, 'suffixes')
 
     # Define columns for one-hot encoding and for scaling
-    categorical_features = ['word_shape', 'POS', 'dep_tag', 'head_text', 'prev_word', 'prev_POS', 'next_word', 'next_POS', 'prefixes', 'suffixes']
+    categorical_features = ['word_shape', 'POS', 'dep_tag', 'head_text', 'prev_word', 'prev_POS', 'next_word', 'next_POS', 'prefixes', 'suffixes', 'is_chunk']
     numeric_features = ['capitalized', 'contains_digit', 'in_league', 'in_club', 'in_home', 'in_player', 'in_coach', 'in_nation', 'in_continent']
 
     # Set up the ColumnTransformer

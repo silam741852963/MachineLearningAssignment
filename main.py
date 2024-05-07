@@ -7,17 +7,19 @@ from utils.predict_new_data import predict_new_data
 
 #-----------------------Extract features-------------------------------------
 
-export_popular_words()
-df = load_data()
-df_exploded = extract_features(df)
+# export_popular_words()
+# df = load_data()
+# df_exploded = extract_features(df)
+
+labeled_data = load_data("processed_data/labeled_data.xlsx")
 
 #-----------------------Preprocess-------------------------------------------
 
-features = preprocess_features(df_exploded)
+features = preprocess_features(labeled_data)
 
 #-----------------------Train------------------------------------------------
 
-train_and_evaluate_model(features, df_exploded['is_chunk'])
+train_and_evaluate_model(features, labeled_data['NER'])
 
 #-----------------------Use--------------------------------------------------
 

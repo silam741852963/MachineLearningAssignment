@@ -21,42 +21,51 @@ def format_feature_names(names):
     return formatted_names
 
 
-def predict_new_data(pipeline_filename='model/svm_pipeline.joblib', label_encoder_filename='model/label_encoder.joblib'):
+import pandas as pd
+import joblib
+
+def predict_new_data(pipeline_filename='model/svm_pipeline.joblib', 
+                     label_encoder_filename='model/label_encoder.joblib', 
+                     input_data_filename='input/new_data.xlsx',
+                     extracted_features_path='output/extracted_features_new_data.csv',
+                     processed_features_path='output/processed_features_new_data.csv',
+                     predictions_output_path='output/predictions_new_data.csv'):
     """
-    Predicts new data using a pre-trained SVM pipeline and a label encoder to convert predicted labels back to original form.
-    
+    Predicts new data using a pre-trained SVM pipeline and a label encoder to convert predicted labels back to original form,
+    while saving intermediate steps and final predictions.
+
     Args:
-    raw_data (list): List of raw text data for prediction.
-    pipeline_filename (str): Filename of the saved SVM pipeline which includes preprocessing and classifier.
-    label_encoder_filename (str): Filename of the saved LabelEncoder.
-    
-    Returns:
-    list: Predicted labels in their original categorical form.
+    pipeline_filename (str): Path to the saved SVM pipeline which includes preprocessing and classifier.
+    label_encoder_filename (str): Path to the saved LabelEncoder.
+    input_data_filename (str): Path to the input data file.
+    extracted_features_path (str): Path to save extracted features CSV.
+    processed_features_path (str): Path to save processed features CSV.
+    predictions_output_path (str): Path to save final predictions CSV.
     """
 
     # Load the full pipeline and label encoder
     pipeline = joblib.load(pipeline_filename)
     label_encoder = joblib.load(label_encoder_filename)
 
-    # Ensure raw_data is a DataFrame with the expected column name
-    df = load_data("input/new_data.xlsx")
-    df_exploded = extract_features(df, output_csv_path="input/extracted_features_new_data.csv")
-    features = preprocess_features(df_exploded, "input/processed_features_new_data.csv")
+    # Load and process data
+    df = pd.read_excel(input_data_filename)
+    df_exploded = extract_features(df, output_csv_path=extracted_features_path)
+    features = preprocess_features(df_exploded, processed_features_path)
 
-    
-    features_to_add = set(format_feature_names(pipeline.named_steps["preprocessor"].get_feature_names_out()))
-
-    for feature in features_to_add:  # Using set to ensure uniqueness
+    # Ensure all required features are present
+    required_features = set(format_feature_names(pipeline.named_steps['preprocessor'].get_feature_names_out()))
+    for feature in required_features:
         if feature not in features.columns:
-            features[feature] = 0  # Default value of 0
+            features[feature] = 0  # Add missing features with default value of 0
 
-    # Use the loaded pipeline to make predictions directly on the DataFrame
-    # The pipeline should handle all preprocessing, including text vectorization
+    # Make predictions and convert to original labels
     predictions = pipeline.predict(features)
-
-    # Convert numeric predictions back to original labels
     predicted_labels = label_encoder.inverse_transform(predictions)
+    
+    df_exploded['predicted_labels'] = predicted_labels  # Append predictions to the input data for full traceability
 
-    print("Predictions:", predicted_labels)
+    # Save the DataFrame with predictions
+    df_exploded.to_csv(predictions_output_path, index=False)
 
-    return predicted_labels
+    print("Predictions saved to:", predictions_output_path)
+    return df_exploded  # Optionally return the DataFrame for further usage
